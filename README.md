@@ -27,34 +27,27 @@ and follow normal [Bundler](https://bundler.io/) installation and execution proc
 
 ## Configuration
 
-Configuration is done through a block returning an instance of `CustomerxTracking::Client`.
-The block is mandatory and if not passed, an `ArgumentError` will be thrown.
-
 ```ruby
 require 'customerx_tracking'
 
-@customerx_tracking = CustomerxTracking::Client.new do |config|
+CustomerxTracking.config do |c|
   # Mandatory:
 
-  config.base_url = "<- customerx-tracking-url ->" # e.g. https://tracking.customerx.com.br/api/v1/tracking or https://sandbox.tracking.customerx.com.br/api/v1/tracking
+  c.base_url = "<- customerx-tracking-url ->" # e.g. https://tracker.customerx.com.br or https://sandbox.tracker.customerx.com.br
 
-  # Choose one of the following depending on your authentication
-  config.credential = "your credential"
-  config.key = "your key"
+  # To perform any tracking action, it is necessary to inform the credential and key that is released when creating a new account in our environments. These credentials identify your company so that the link of the tracking carried out is valid.
+  c.credential = "your credential"
+  c.key = "your key"
 end
 ```
 
 ## Usage
 
-The result of configuration is an instance of `CustomerxTracking::Client` which can then be used in two different methods.
-
-One way to use the client is to pass it in as an argument to individual classes.
-
 ## Actions
 
 ### Tracker
 
-At this point we will track the information. With the ```@customerx_tracking``` variable instantiated in initilizer we can call the tracker method
+To make the tracker just start the module ```CustomerxTracking::Tracker.create``` with that enter the parameters for the tracker
 
 Mandatory parameters:
 
@@ -77,31 +70,12 @@ Field Details:
 Example:
 
 ```
-@customerx_tracking.tracker(
+CustomerxTracking::Tracker.create({
   external_id_client: '145206',
   identifier: 'report_x',
   type_tracking: 'action',
   email: 'email@email.com'
-)
-```
-
-For additional fields use `additonal_data`
-
-```
-additonal_data = {
-  amount: 1,
-  external_id_product: '123',
-  external_id_contact: '21312',
-  date_tracking: '01/01/2021'
-}
-
-@customerx_tracking.tracker(
-  external_id_client: '145206',
-  identifier: 'report_x',
-  type_tracking: 'action',
-  email: 'email@email.com',
-  additonal_data: additonal_data
-)
+})
 ```
 
 ## Note on Patches/Pull Requests
