@@ -15,7 +15,8 @@ Gem::Specification.new do |spec|
   spec.description   = 'Ruby wrapper for the REST API at https://www.customerx.cx. Documentation at https://www.customerx.cx/developers.'
   spec.homepage      = 'https://github.com/CustomerX-CX/customerx_tracking_client_rb'
   spec.license       = 'MIT'
-  spec.required_ruby_version = '3.0.0'
+  spec.required_ruby_version     = '>= 2.5'
+  spec.required_rubygems_version = '>= 1.3.6'
 
   spec.metadata = {
     'bug_tracker_uri' => 'https://github.com/CustomerX-CX/customerx_tracking_client_rb/issues',

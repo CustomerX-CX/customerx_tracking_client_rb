@@ -1,3 +1,7 @@
+# v2.1.1
+## 2021-10-13
+* Remove fixed version ruby 3.0.0
+
 # v2.1.0
 ## 2021-10-13
 * Update version ruby
