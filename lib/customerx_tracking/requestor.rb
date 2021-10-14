@@ -1,21 +1,22 @@
 module CustomerxTracking
   class Requestor < Base
     def initialize
-      raise 'credential and key should be set' if authorizations_is_not_present?
+      super
+      raise 'authorization or credential and key should be set' if authorizations_is_not_present?
     end
 
     def request(meth, params = nil)
       meth = meth.downcase
 
       begin
+        p JSON.parse(params.to_json)
         response = connection.method(meth).call do |req|
-          (if meth == :get then req.params = params else req.body = params end) if params
+          (meth == :get ? (req.params = params) : (req.body = params.to_json)) if params
         end
-      rescue
-        raise 'it was not possible to carry out the request'
+      rescue StandardError => e
+        raise "it was not possible to carry out the request #{e}"
       end
 
-      p response
       { status: response.status, body: JSON.parse(response.body) }
     end
   end

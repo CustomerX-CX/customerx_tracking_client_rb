@@ -5,7 +5,7 @@ module CustomerxTracking
     end
 
     def authorizations_is_not_present?
-      ::CustomerxTracking.credential.nil? || ::CustomerxTracking.key.nil?
+      ::CustomerxTracking.authorization.nil? && (::CustomerxTracking.credential.nil? || ::CustomerxTracking.key.nil?)
     end
 
     private
@@ -13,11 +13,18 @@ module CustomerxTracking
     def faraday_options
       {
         headers: {
-          accept: "application/json",
-          credential: ::CustomerxTracking.credential,
-          key: ::CustomerxTracking.key
-        },
+          'Content-Type' => 'application/json'
+        }.merge(validate_authorization),
         url: ::CustomerxTracking.base_url
+      }
+    end
+
+    def validate_authorization
+      return { authorization: ::CustomerxTracking.authorization } unless ::CustomerxTracking.authorization.nil?
+
+      {
+        credential: ::CustomerxTracking.credential,
+        key: ::CustomerxTracking.key
       }
     end
   end

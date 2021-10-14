@@ -1,9 +1,5 @@
-# Module main of CustomerX Tracking
 module CustomerxTracking
-  @base_url = 'https://tracking.customerx.com.br/api/v1/trackings'
-  @credential
-  @key
-  @authorization
+  @base_url = 'https://tracker.customerx.com.br'
 
   def self.config
     yield self

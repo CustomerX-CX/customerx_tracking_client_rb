@@ -1,36 +1,11 @@
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 3.0.0
   DisplayCopNames: true
   Exclude:
     - .git/**/*
+  NewCops: enable
 
-# Align ends correctly.
-Layout/EndAlignment:
-  EnforcedStyleAlignWith: variable
-
-# Align the elements of a hash literal if they span more than one line.
-Layout/AlignHash:
-  EnforcedLastArgumentHashStyle: ignore_implicit
-
-# Align the parameters of a method call if they span more than one line.
-Layout/AlignParameters:
-  EnforcedStyle: with_fixed_indentation
-
-# Checks the indentation of hanging closing parentheses.
-Layout/ClosingParenthesisIndentation:
+Style/FrozenStringLiteralComment:
   Enabled: false
-
-# Checks the indentation of the first parameter in a method call.
-Layout/FirstParameterIndentation:
-  EnforcedStyle: consistent
-
-# Checks indentation of method calls with the dot operator that span more than one line.
-Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
-
-# Checks indentation of binary operations that span more than one line.
-Layout/MultilineOperationIndentation:
-  EnforcedStyle: indented
-
-Metrics:
+Style/Documentation:
   Enabled: false
