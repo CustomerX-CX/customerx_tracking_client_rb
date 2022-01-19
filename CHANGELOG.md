@@ -1,3 +1,6 @@
+# v2.2.0
+## 2022-01-19
+* Remove authentication for authorization
 # v2.1.1
 ## 2021-10-13
 * Remove fixed version ruby 3.0.0

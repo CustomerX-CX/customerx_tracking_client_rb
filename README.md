@@ -38,25 +38,6 @@ CustomerxTracking.config do |c|
   # To perform any tracking action, it is necessary to inform the credential and key that is released when creating a new account in our environments. These credentials identify your company so that the link of the tracking carried out is valid.
   c.credential = "your credential"
   c.key = "your key"
-
-  # In the authorization method, the company key found in the company's registration is required. In this method we will get this key plus the external_id_client and the email of the user who will be tracking. We will create a SHA256 and then convert to Base64 this will be your authorization. Example:
-  
-  # Ruby 
-  ### mySHA256 = OpenSSL::HMAC.digest('sha256', your customer key, "#{client.external_id_client}:#{email}")
-  ### myBase64 = Base64.encode64(mySHA256) 
-  ### /h/B4pTJ3FdOgkYdYuh1UZFQ16B1pi+5idFCJKJ9Z1g=
-
-  # JS
-  ### funcao gera_hash(external_id_client, email_client) {
-  ###   key = 'e64ec8813228b00400f3da965d858513';
-  ###   value = external_id_client + ':' + email_client;
-  ###   sha_256 = HMAC.SHA256(key, value);
-  ###   hash = Base64.encode(sha_256);
-  ###   retorna hash;
-  ### }
-
-  # OBS: Use only one authentication method. Authorization or Credential and Key
-  c.authorization = ""
 end
 ```
 
