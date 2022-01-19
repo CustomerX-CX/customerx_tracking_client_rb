@@ -28,14 +28,6 @@ module CustomerxTracking
   def self.key=(key)
     @key = key
   end
-
-  def self.authorization
-    @authorization
-  end
-
-  def self.authorization=(authorization)
-    @authorization = authorization
-  end
 end
 
 require 'faraday'

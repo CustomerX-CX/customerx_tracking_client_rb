@@ -2,14 +2,13 @@ module CustomerxTracking
   class Requestor < Base
     def initialize
       super
-      raise 'authorization or credential and key should be set' if authorizations_is_not_present?
+      raise 'credential and key should be set' if authorizations_is_not_present?
     end
 
     def request(meth, params = nil)
       meth = meth.downcase
 
       begin
-        p JSON.parse(params.to_json)
         response = connection.method(meth).call do |req|
           (meth == :get ? (req.params = params) : (req.body = params.to_json)) if params
         end
