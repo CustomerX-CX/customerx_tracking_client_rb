@@ -1,3 +1,6 @@
+# v2.3.0
+## 2022-06-13
+* Upgrade dependence gem faraday
 # v2.2.0
 ## 2022-01-19
 * Remove authentication for authorization
